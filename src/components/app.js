@@ -19,21 +19,29 @@ class App {
 //   console.log()
 window.onload = function newForm(){
   let form = document.getElementById('new-note-form')
-  form.innerHTML = "<input type='text' name='newTask'>" + "</br>" +"<input type='submit'>"  
+  form.innerHTML = "<input type='text' name='newTask' id ='newTask'>" + "</br>" +"<input type='submit'>"  
 }
 
 
 
 var form = document.getElementById('new-note-form')
 
-var itemList = document.querySelector('#notes-container')
 
 form.addEventListener('submit', addTask)
 
 function addTask(e){
   e.preventDefault()
-  console.log(1)
-
   // getting input value
-  var newItem = document.getElement 
+  var container = document.querySelector('div.container')
+  var newTask = document.getElementById('newTask').value
+  // create new div and li
+  var newDiv = document.createElement('div')
+  newDiv.className = 'notes-container'
+  container.appendChild(newDiv)
+  var newLi = document.createElement('li')
+  newLi.className = 'notes-list'
+  newDiv.appendChild(newLi)
+
+  newLi.appendChild(document.createTextNode(newTask))
+
 }
