@@ -44,4 +44,5 @@ function addTask(e){
 
   newLi.appendChild(document.createTextNode(newTask))
 
+ var field = document.getElementById('newTask').value=''
 }
