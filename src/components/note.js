@@ -17,8 +17,3 @@
 //   }
 // }
 
-class Task {
-  constructor(){
-    this.name = name
-  }
-}
