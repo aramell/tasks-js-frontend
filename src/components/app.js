@@ -1,6 +1,7 @@
 class App {
   constructor() {
     this.tasks = new Tasks()
+    
   }
 }
 // var click = document.getElementById('new-note-form')
@@ -20,21 +21,21 @@ class App {
 
 
 
-window.onload = function newForm(){
-  let form = document.getElementById('new-task-form')
-  form.innerHTML = "<input type='text' name='newTask' id ='newTask'>" + "</br>" +"<input type='submit'>"  
+// window.onload = function newForm(){
+//   let form = document.getElementById('new-task-form')
+//   form.innerHTML = "<input type='text' name='newTask' id ='newTask'>" + "</br>" +"<input type='submit'>"  
  
-  var container = document.querySelector('div.container')
-  // var newTask = document.getElementById('newTask').value
-  var newDiv = document.createElement('div')
-  newDiv.className = 'tasks-container'
+//   var container = document.querySelector('div.container')
+//   // var newTask = document.getElementById('newTask').value
+//   var newDiv = document.createElement('div')
+//   newDiv.className = 'tasks-container'
   
-  container.appendChild(newDiv)
-  debugger
-  var newLi = document.createElement('li')
-  newLi.className = 'notes-list'
-  newDiv.appendChild(newLi)
-}
+//   container.appendChild(newDiv)
+//   // debugger
+//   var newLi = document.createElement('li')
+//   newLi.className = 'notes-list'
+//   newDiv.appendChild(newLi)
+// }
 
 
 

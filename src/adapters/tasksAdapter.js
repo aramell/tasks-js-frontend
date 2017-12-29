@@ -11,12 +11,13 @@ class TasksAdapter {
   }
 
   createTask(name) {
+    // debugger
     const taskCreateParams = {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      name: JSON.stringify({ name }) //previously was body - not sure if this should be name or not
+      body: JSON.stringify({ name }) //previously was body - not sure if this should be name or not
     }
     return fetch(this.baseUrl, taskCreateParams).then(res => res.json())
   }

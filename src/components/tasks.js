@@ -5,14 +5,31 @@ class Tasks {
     this.adapter = new TasksAdapter()
     this.fetchAndLoadTasks()
   }
+  
 
   initBindingsAndEventListeners() {
+    
+      let form = document.getElementById('new-task-form')
+      form.innerHTML = "<input type='text' name='newTask' id ='newTask'>" + "</br>" +"<input type='submit'>"  
+     
+      var container = document.querySelector('div.container')
+      // var newTask = document.getElementById('newTask').value
+      var newDiv = document.createElement('div')
+      // newDiv.className = 'tasks-container'
+      newDiv.setAttribute("id", "tasks-container")
+      container.appendChild(newDiv)
+      var newLi = document.createElement('li')
+      newLi.className = 'notes-list'
+      newDiv.appendChild(newLi)
+    
+    
     this.tasksForm = document.getElementById('new-task-form') //task form
-    this.taskInput = document.getElementById('new-task-name') //name of task
+    this.taskInput = document.getElementById('newTask') //name of task
     this.tasksNode = document.getElementById('tasks-container') // task list
     this.tasksForm.addEventListener('submit',this.handleAddtask.bind(this))
     this.tasksNode.addEventListener('click',this.handleDeletetask.bind(this))
   }
+  
 
   fetchAndLoadTasks() {
     this.adapter.getTasks()
@@ -23,15 +40,16 @@ class Tasks {
 
   handleAddtask() {
     event.preventDefault()
-    const body = this.taskInput.value
-    this.adapter.createtask(body)
+    const name = this.taskInput.value
+    this.adapter.createTask(name)
     .then( (taskJSON) => this.tasks.push(new Task(taskJSON)) )
     .then(  this.render.bind(this) )
     .then( () => this.taskInput.value = '' )
   }
 
   handleDeletetask() {
-    if (event.target.dataset.action === 'delete-task' && event.target.parentElement.classList.contains("task-element")) {
+    event.preventDefault()
+    if (event.target.dataset.action === 'delete-task' && event.target.parentElement.classList.contains("task-container")) {
       const taskId = event.target.parentElement.dataset.taskId
       this.adapter.deletetask(taskId)
       .then( resp => this.removeDeletedtask(resp) )
