@@ -19,7 +19,7 @@ class App {
 //   console.log()
 window.onload = function newForm(){
   let form = document.getElementById('new-note-form')
-  form.innerHTML = "<input type='text' name='newTask'>" + "<input type='submit' value='saveTask'>"  
+  form.innerHTML = "<input type='text' name='newTask'>" + "</br>" +"<input type='submit'>"  
 }
 
 
