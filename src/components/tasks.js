@@ -48,16 +48,16 @@ class Tasks {
   }
 
   handleDeletetask() {
+    
     event.preventDefault()
-    if (event.target.dataset.action === 'delete-task' && event.target.parentElement.classList.contains("task-container")) {
-      const taskId = event.target.parentElement.dataset.taskId
+    if (event.target.dataset.action === 'delete-task' && event.target.parentElement.classList.contains("task-element")) {
+      const taskId = event.target.parentElement.dataset.taskid
       this.adapter.deletetask(taskId)
       .then( resp => this.removeDeletedtask(resp) )
     }
   }
 
   removeDeletedtask(deleteResponse) {
-    debugger
     this.tasks = this.tasks.filter( task => task.id !== deleteResponse.taskId )
     this.render()
   }

@@ -11,7 +11,6 @@ class TasksAdapter {
   }
 
   createTask(name) {
-    // debugger
     const taskCreateParams = {
       method: "POST",
       headers: {
@@ -29,6 +28,7 @@ class TasksAdapter {
         "Content-Type": "application/json"
       }
     }
+     
     return fetch(`${this.baseUrl}/${taskId}`, taskDeleteParams).then(res =>
       res.json()
     )

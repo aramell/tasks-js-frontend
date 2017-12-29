@@ -13,6 +13,6 @@ class Task {
       this
     )}' class='task-element'><a class="show-link" href='#'>${
       this.name
-    }</a> <button data-action='edit-task'>Edit</button> <i data-action='delete-task' class="em em-scream_cat"></i></li>`
+    }</a> <button data-action='edit-task'>Edit</button> <i data-action='delete-task' class="em em-scream_cat" id="em"></i></li>`
   }
 }
