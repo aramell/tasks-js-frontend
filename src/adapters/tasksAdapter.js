@@ -11,6 +11,10 @@ class TasksAdapter {
   }
 
   createTask(name) {
+    if (name === ""){
+    alert("field cannot be blank")
+    return false}
+  
     const taskCreateParams = {
       method: "POST",
       headers: {
@@ -33,4 +37,5 @@ class TasksAdapter {
       res.json()
     )
   }
+  
 }
