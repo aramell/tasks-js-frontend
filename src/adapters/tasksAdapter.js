@@ -20,7 +20,7 @@ class TasksAdapter {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name }) //previously was body - not sure if this should be name or not
+      body: JSON.stringify({ name })
     }
     return fetch(this.baseUrl, taskCreateParams).then(res => res.json())
   }
