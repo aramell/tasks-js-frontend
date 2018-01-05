@@ -28,6 +28,8 @@ class Tasks {
     this.tasksNode = document.getElementById('tasks-container') // task list
     this.tasksForm.addEventListener('submit',this.handleAddtask.bind(this))
     this.tasksNode.addEventListener('click',this.handleDeletetask.bind(this))
+    this.tasksNode.addEventListener('click',this.handleEditTask.bind(this))
+
   }
   
 
@@ -46,11 +48,26 @@ class Tasks {
     .then(  this.render.bind(this) )
     .then( () => this.taskInput.value = '' )
   }
+  handleEditTask(){
+    event.preventDefault()
+    if (event.target.dataset.action === 'edit-task') {
+        
+      const taskId = event.target.parentElement.dataset.taskid
+      
+        this.adapter.editTaskForm(taskId)
+        
+    this.adapter.editTask(taskId)
+    .then((taskJSON)=> this.tasks.push(new Task(taskJSON)) )
+    .then( this.render.bind(this))
+    .then(()=> this.taskInput.value = '' )
+    }
+  }
 
   handleDeletetask() {
     
     event.preventDefault()
-    if (event.target.dataset.action === 'delete-task' && event.target.parentElement.classList.contains("task-element")) {
+    if (event.target.dataset.action === 'delete-task' ) {
+      
       const taskId = event.target.parentElement.dataset.taskid
       this.adapter.deletetask(taskId)
       .then( resp => this.removeDeletedtask(resp) )
@@ -71,4 +88,5 @@ class Tasks {
     
     this.tasksNode.innerHTML = `<ul>${this.tasksHTML()}</ul>`
   }
+ 
 }
