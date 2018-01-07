@@ -37,43 +37,38 @@ class TasksAdapter {
       res.json()
     )
   }
-  editTask(taskId){
+  editTask(taskId, newTask){
     
     const taskEditParams = {
-      method: "update",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json"
-      }
+      },
+      body: JSON.stringify({ name: newTask })
+ 
     }
+    
     return fetch(`${this.baseUrl}/${taskId}`, taskEditParams).then(res=> 
     res.json())
     
+    
   }
   editTaskForm(taskId){
-
-  var edit =  document.getElementById(taskId)
-    edit.contentEditable = 'true'
-    edit.focus()
-    // var textarea = document.getElementById(taskId)
-    
     var button = document.getElementById('edit' + taskId)
-    button.innerHTML = 'save'
-    // textarea.dataset = `${taskId}`
-    // textarea.appendChild(input)
+    var edit =  document.getElementById(taskId)
+      edit.contentEditable = 'true'
+      edit.focus()
+      button.innerText = "Save"
 
-    //  var button = '<input id="' + obj.id + '_save" type="button" value="SAVE" /> OR 
-    //       <input id="' + obj.id + '_cancel" type="button" value="CANCEL" /></div>';
+    button.onclick = function(){
+      if (button.innerText === 'Save'){
+        var newTask 
+     }
+    } 
+  }
+  
 
-    // var li = document.getElementById(`${taskId}`)
-    // li.innerHTML += textarea
-    //  Event.observe(obj.id+'_save', 'click', function(){saveChanges(obj)}, false);
-    //  Event.observe(obj.id+'_cancel', 'click', function(){cleanUp(obj)}, false);
-    // task.setAttribute("contentEditable", true).focus()
-   
-     
-    }
-
+}
 
     
   
-}

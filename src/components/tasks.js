@@ -53,13 +53,12 @@ class Tasks {
     if (event.target.dataset.action === 'edit-task') {
         
       const taskId = event.target.parentElement.dataset.taskid
-      
-        this.adapter.editTaskForm(taskId)
+      var newTask = document.getElementById(taskId).innerText
+        // this.adapter.editTaskForm(taskId)
         
-    this.adapter.editTask(taskId)
-    .then((taskJSON)=> this.tasks.push(new Task(taskJSON)) )
-    .then( this.render.bind(this))
-    .then(()=> this.taskInput.value = '' )
+    this.adapter.editTask(taskId, newTask)
+    
+    
     }
   }
 
